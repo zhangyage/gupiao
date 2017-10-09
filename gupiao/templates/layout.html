@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!-- saved from url=(0035)https://login.yazhoujuejin.com/main -->
+<html class="panel-fit"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 公用页面 -->
+
+<title>后台管理系统</title>
+<link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+<link rel="stylesheet" type="text/css" href="../static/css/admin.css">
+<link rel="stylesheet" type="text/css" href="../static/css/common.css">
+
+</head>
+<body >
+<header class="header public-header">
+   	<div class="public-container public-container">
+      	<div class="header-logo"><a href="#"></a></div>
+          <div class="header-user">
+          	<li class="user-item"><a href="#">用户名</a></li>
+               <li class="user-item"><a href="#">|</a></li>
+              <li class="user-item"><a href="#">状态</a></li>
+          </div>
+          <div class="header-nav">
+          	<li class="item"><a href="#">转让</a></li>
+              <li class="item"><a href="#">现金管理</a></li>
+              <li class="item"><a href="#">预约</a></li>
+              <li class="item"><a href="#">我的账户</a></li>
+          </div>
+      </div>
+</header> 
+    
+   {% block content %}
+   
+   {% endblock %}
+
+	<!--尾部-->
+<div class="public-footer">
+    	<div class="public-container clearfloat">
+        	<div class="footer-col">
+            	<p>专业技术咨询<br>全方位产品解读<br>成熟解决方案<br>成功客户案例分享</p>
+            </div>
+            <div class="footer-col">
+            	<p>专业技术咨询<br>全方位产品解读<br>成熟解决方案<br>成功客户案例分享</p>
+            </div>
+            <div class="footer-col">
+            	<p>专业技术咨询<br>全方位产品解读<br>成熟解决方案<br>成功客户案例分享</p>
+            </div>
+            <div class="footer-col">
+            	<div class="footer-logo"><a href="#"></a></div>
+            	<div class="footer-info">
+                	<div class="footer-version">
+                    	<a>©  深圳前海石时代信息技术有限公司</a>
+                		<li> <a class="footer-link">友情链接:</a></li>
+                   		<li><a class="footer-link" href="#">亚洲掘进</a></li>
+                        <li><a class="footer-link" href="#">陨石地带</a></li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--尾部  结束-->
+<script src="../static/js/jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function() {
+		$('.box_left>li').click(function() {
+			var index = $(this).index()
+			$(this).addClass('active').siblings().removeClass('active');
+			$('.box_right .item').eq(index).addClass('block').siblings().removeClass('block')
+		})
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/*common style*/
+/*头部开始*/
+.public-header{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	background:#333;
+	color:#fff;
+	height:80px;
+	z-index:999;
+}
+
+.public-header .header-logo{
+	float:left;
+	margin-top:16px;
+	width:300px;
+	height:45px;
+	background:url(../image/logo.png) no-repeat;
+}
+
+.public-header .header-logo a{
+	height:46px;
+}
+
+/*用户状态开始*/
+.public-header .header-user{
+	float:right;
+	font-size:14px;
+}
+
+.public-header .header-user .user-item{
+	float:left;
+	margin-top:2px;
+	margin-left:10px;
+}
+.public-header .header-user a{
+	color:#fff;
+}
+/*用户状态结束*/
+
+/*用户导航开始*/
+.public-header .header-nav{
+	float:right;
+	font-size:20px;
+}
+	
+.public-header .header-nav .item{
+	float:left;
+	margin-top:25px;
+	margin-left:50px;
+}
+
+.public-header .header-nav a{
+	color:#fff;
+}
+/*用户导航结束*/
+
+/*头部结束*/
+
+.public-container{
+	position:relative;
+	margin:0 auto;  /*居中定位*/
+	/*background:#039;*/
+	width:1100px;
+}
+
+
+
+/*底部开始*/
+.public-footer{
+	padding: 30px 0;
+	background:#333;
+}
+	
+.public-footer .footer-col{
+	width:230px;
+	float:left;
+	margin-right:60px;
+	font-size:16px;
+	color:#fff;
+	line-height:1.8
+}
+/*修复最后一个重叠问题*/
+.public-footer .footer-col:last-child{
+	margin-right:0;
+}
+
+.public-footer .footer-col .footer-logo{
+	float:left;
+	margin-top:-15px;
+	width:300px;
+	height:45px;
+	background:url(../image/foot-logo.png) no-repeat;
+	}
+.public-footer .footer-col .footer-info{
+	float:left;
+	font-size:12px;
+	padding-top:9px;
+}
+
+.public-footer .footer-col .footer-info .footer-version .footer-link{
+	float:left;
+	margin-right:15px;
+}

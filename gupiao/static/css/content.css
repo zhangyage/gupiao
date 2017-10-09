@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+.right{
+	width: 300px;
+	height: 600px;
+    padding-top: 4px;
+    float: right;
+	background-color:#CCC;
+	}
+	
+.content-page{
+	width: 630px;
+    overflow: hidden;
+    margin-top: 3px;
+    float: left;
+	}
+	
+.hide{
+	display:none;}
+	
+.reply1{
+	height:90px;
+	width:600px;}
+	
+#part4-button{
+	/*float:right*/
+	margin-right:40px;}
+	
+.content{
+	min-height:550px;
+	max-height:550px;
+	overflow-y:scroll;}
+.left{
+	float:left;}
+	
+.btn{
+	height:66px;
+	width:80px;}
+	
+#message{
+	height:60px;
+	width:213px;}
+
+.clearfix{
+	padding-top:0px;
+	padding-bottom:
+	}
+
+
+	

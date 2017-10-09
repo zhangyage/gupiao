@@ -1,0 +1,227 @@
+{% extends "layout.html"%}
+{% block content %}
+<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/55/sjckzedf/jquery-1.8.0.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	$('.theme-login').click(function(){
+		$('.theme-popover-mask').fadeIn(100);
+		$('.theme-popover').slideDown(200);
+	})
+	$('.theme-poptit .close').click(function(){
+		$('.theme-popover-mask').fadeOut(100);
+		$('.theme-popover').slideUp(200);
+	})
+
+})
+</script>
+<link rel="stylesheet" type="text/css" href="../static/css/form.css">
+<div class="container">
+	<div class="box">
+		<ul class="box_left">
+			<li class="active">
+				<a href="javascript:void(0);" class="anchor">盈亏状态</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">添加股票</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">购买股票</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">信息展示</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">曲线走势</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">我的钱包</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">数据爬取</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">&nbsp</a>
+			</li>
+			<li>
+				<a href="javascript:void(0);" class="anchor">&nbsp</a>
+			</li>
+		</ul>
+		<div class="box_right">
+	        <div class="item block">
+       			 <table border="1px">
+                <tr>
+                    <td>编号</td>
+                    <td>股票代码</td>
+                    <td>股票名称</td>
+                    <td>买进价格</td>
+                    <td>买进股数</td>
+                    <td>购买时间</td>
+                    <td>股票现价</td>
+                    <td>盈亏利率</td>
+                    <td>状态修改</td>
+                </tr>
+              
+                {% for item in gmjl %}
+                    <tr>
+                        <td>{{item[0]}}</td>
+                        <td>{{item[1]}}</td>
+                        <td style="color:red;">{{item[2]}}</td>
+                        <td>{{item[3]}}</td>
+                        <td>{{item[4]}}</td>
+                        <td>{{item[5]}}</td>
+                        <td>{{item[7]}}</td>
+                        <td>{{item[8]}}</td>
+                        <td><div class="status">
+                        <a class="btn btn-primary btn-large theme-login" href="javascript:;" >修改</a>
+                        <a href="#">删除</a>
+                     </div></td>
+                    </tr>
+                {% endfor %}
+        </table>
+	        </div>
+<!-- 弹出修改框 -->
+<div class="theme-popover">
+     <div class="theme-poptit">
+          <a href="javascript:;" title="关闭" class="close">×</a>
+          <h3 style="color:#fff;">修改购买信息</h3>
+     </div>
+     <div class="theme-popbod dform">
+           <form class="theme-signin" name="loginform" action="" method="post">
+                <ol>
+                     <li><strong>股票代码：</strong><input class="ipt" type="text" name="log" value="603067" size="20" /></li>
+                     <li><strong>股票名称：</strong><input class="ipt" type="text" name="pwd" value="振华股份" size="20" /></li>
+                     <li><strong>买进价格：</strong><input class="ipt" type="text" name="pwd" value="18.87" size="20" /></li>
+                     <li><strong>买进股数：</strong><input class="ipt" type="text" name="pwd" value="500" size="20" /></li>
+                     <li><input class="btn btn-primary" type="submit" name="submit" value=" 提交修改 " /></li>
+                </ol>
+           </form>
+     </div>
+</div>
+<div class="theme-popover-mask"></div>
+	        
+	        <div class="item">
+                    <form id="payment" action='/gu_insert' method='post'>
+                        <fieldset>
+                    
+                    <ol>
+                        <li>
+                            <label for="name"> 股票代码：</label>
+                            <input id="name" name="gnum" type="text" placeholder="请输入股票代码" required autofocus>
+                        </li>
+                        <li>
+                            <label for="email">股票名称：</label>
+                            <input id="email" name="gname" type="text" placeholder="请输入股票名称" required>
+                        </li>
+                        <li>
+                            <label for="phone">爬虫链接:</label>
+                            <input id="phone" name="glink" type="text" placeholder="请输入爬虫链接" required>
+                        </li>
+                        <li>
+                            <label for="phone">下破阈值：</label>
+                            <input id="phone" name="phone" type="text" placeholder="请输入上破阈值" required>
+                        </li>
+                        <li>
+                            <label for="phone">上破阈值：</label>
+                            <input id="phone" name="g_down" type="text" placeholder="请输入下破阈值" required>
+                        </li>
+                    </ol>
+                   </fieldset>
+                    <fieldset>
+                        <button type="submit">提交</button>
+                    </fieldset>
+                </form>
+                <h2>{{ get_flashed_messages()[0] }}</h2>
+	        </div>
+	        
+	        
+	        <div class="item">
+	        	<form id="payment" action='/gu_price' method='post'>
+		         <fieldset>
+		            <legend>添加股票信息</legend>
+		        	<ol>
+		            	<li>
+		            <label for="name">股票代码:</label>
+		            <input id="phone" type='text' name='gnum' placeholder="请输入股票代码">
+		            	</li>
+		                <li>
+		            <label for="name">买进单价：</label>
+		            <input type='text' name='gprice' placeholder="请输入股票价格">
+		            	</li>
+		                <li>
+		            <label for="name">买进股数:</label>
+		            <input id="phone" type='text' name='numbers' placeholder="请输入买进股数">
+		            	</li>
+		            </ol>
+		            </fieldset>
+		            <fieldset>
+		            	<button type="submit">提交</button>
+		            </fieldset>
+		        <h2>{{ get_flashed_messages()[0] }}</h2>
+	        </div>
+	        
+	        
+	        <div class="item">
+		        <table border="1px">
+	            <tr>
+	            	<td>编号</td>
+	            	<td>股票名称</td>
+	                <td>股票代码</td>
+	                <td>爬虫地址</td>
+	                <td>阈值上</td>
+	                <td>阈值下</td>
+                    <td>状态修改</td>
+	            </tr>
+	          
+	    	{% for item in data_info %}
+	        	<tr>
+	                <td>{{item[0]}}</td>
+	            	<td style="color:red;">{{item[1]}}</td>
+	                <td>{{item[2]}}</td>
+	                <td>{{item[3]}}</td>
+	                <td>{{item[4]}}</td>
+	                <td>{{item[5]}}</td>
+                    <td>
+                    <div class="header-user">
+                        <li class="user-item"><a href="#" onclick="update();">修改</a></li>
+                        <li class="user-item"><a href="#">|</a></li>
+                        <li class="user-item"><a href="#">删除</a></li>
+                     </div></td>
+	            </tr>
+	        {% endfor %}
+    </table>
+	        </div>
+	        <div class="item">5.心理学家提出，人类行为的根本驱动力，都可以归结为两类，逃避痛苦，或追求快乐。也可能我记错了，不是心理学家说的。趋利避害，本是人性，恐怕也是所有生命固有的本能。
+				一开始确实是为了摆脱痛苦。2012年底，也就是在走完珠峰大本营徒步道的那一年，老霍和当时的女友分手了，本来计划的318川藏线骑行也告吹了。急于走出痛苦，想要彻底忘掉过去，这样的动因促使他开始寻找解脱的出口，太平洋山脊小道就在那时出现了。
+				“其实直到2016年我才真正找到机会踏上这条路。毕竟计划这样一次徒步是个大工程，期间又发生了很多事。当我真的出发时，失恋的痛苦早已被时间冲淡，之所以还要走，是因为对行走执着的热爱吧。”
+				用了几个月的时间进行准备，包括辞掉工作，将公寓出租，和父母争论……阻碍不能说不大，挣扎和犹豫也不是没有，但最后，老霍终于还是背起行囊，走上了这条梦寐以求的路。
+				是否可以说，是痛苦将太平洋山脊小道带给了他，而热爱让他最终能踏上征程。
+				作者：Rose的肉丝儿<br />
+				链接：http://www.jianshu.com/p/063a77e3ccfa <br />
+				來源：简书<br />
+				著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br />
+	        </div>
+	        <div class="item">6.心理学家提出，人类行为的根本驱动力，都可以归结为两类，逃避痛苦，或追求快乐。也可能我记错了，不是心理学家说的。趋利避害，本是人性，恐怕也是所有生命固有的本能。
+				一开始确实是为了摆脱痛苦。2012年底，也就是在走完珠峰大本营徒步道的那一年，老霍和当时的女友分手了，本来计划的318川藏线骑行也告吹了。急于走出痛苦，想要彻底忘掉过去，这样的动因促使他开始寻找解脱的出口，太平洋山脊小道就在那时出现了。
+				“其实直到2016年我才真正找到机会踏上这条路。毕竟计划这样一次徒步是个大工程，期间又发生了很多事。当我真的出发时，失恋的痛苦早已被时间冲淡，之所以还要走，是因为对行走执着的热爱吧。”
+				用了几个月的时间进行准备，包括辞掉工作，将公寓出租，和父母争论……阻碍不能说不大，挣扎和犹豫也不是没有，但最后，老霍终于还是背起行囊，走上了这条梦寐以求的路。
+				是否可以说，是痛苦将太平洋山脊小道带给了他，而热爱让他最终能踏上征程。
+				作者：Rose的肉丝儿<br />
+				链接：http://www.jianshu.com/p/063a77e3ccfa <br />
+				來源：简书<br />
+				著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br />
+	        </div>
+	        <div class="item">7.心理学家提出，人类行为的根本驱动力，都可以归结为两类，逃避痛苦，或追求快乐。也可能我记错了，不是心理学家说的。趋利避害，本是人性，恐怕也是所有生命固有的本能。
+				一开始确实是为了摆脱痛苦。2012年底，也就是在走完珠峰大本营徒步道的那一年，老霍和当时的女友分手了，本来计划的318川藏线骑行也告吹了。急于走出痛苦，想要彻底忘掉过去，这样的动因促使他开始寻找解脱的出口，太平洋山脊小道就在那时出现了。
+				“其实直到2016年我才真正找到机会踏上这条路。毕竟计划这样一次徒步是个大工程，期间又发生了很多事。当我真的出发时，失恋的痛苦早已被时间冲淡，之所以还要走，是因为对行走执着的热爱吧。”
+				用了几个月的时间进行准备，包括辞掉工作，将公寓出租，和父母争论……阻碍不能说不大，挣扎和犹豫也不是没有，但最后，老霍终于还是背起行囊，走上了这条梦寐以求的路。
+				是否可以说，是痛苦将太平洋山脊小道带给了他，而热爱让他最终能踏上征程。
+				作者：Rose的肉丝儿<br />
+				链接：http://www.jianshu.com/p/063a77e3ccfa <br />
+				來源：简书<br />
+				著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br />
+	        </div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
