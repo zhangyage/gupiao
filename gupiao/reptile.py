@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+#返回实时价格
+
 import urllib2
 import re
 
