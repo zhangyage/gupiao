@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
+#启动页面
 
 from  flask import Flask,render_template,request,flash,url_for,redirect
 import get_data
