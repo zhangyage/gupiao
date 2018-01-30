@@ -38,7 +38,7 @@ def indexs():
     
     return render_template('index.html',price=price,date=date,gname=gname,select_data=info_name)
 
-@app.route('/admin')
+@app.route('/admin/')
 def admin():
     #添加的爬虫股票信息
     gu = Gu_conctol()
